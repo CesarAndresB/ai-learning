@@ -122,3 +122,7 @@ chat-ui/
 ## License
 
 This project is for learning purposes. Review API and data source licenses before production use.
+
+##Example
+
+<img width="1256" height="755" alt="image" src="https://github.com/user-attachments/assets/7c7313a8-7e97-41fd-a061-f86b42aeac26" />
