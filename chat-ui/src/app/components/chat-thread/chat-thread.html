@@ -1,0 +1,27 @@
+<!-- Chat block -->
+<section class="chat" #chatContainer>
+    <div *ngFor="let msg of messages" class="message" [ngClass]="msg.role">
+        <div class="avatar" *ngIf="msg.role === 'assistant'">
+            <img src="/ai-logo.webp" alt="Assistant" />
+        </div>
+        <div class="bubble">
+            <ng-container *ngIf="!msg.loading; else typing">
+                {{ msg.content }}
+            </ng-container>
+            <ng-template #typing>
+                <span class="typing">
+                    <span class="typing-dots"><span></span><span></span><span></span></span>
+                    <span class="verbose" *ngIf="msg.verbose">{{ msg.verbose }}</span>
+                </span>
+            </ng-template>
+        </div>
+    </div>
+    <!-- anchor for scroll if needed -->
+    <div id="chat-bottom-anchor"></div>
+</section>
+
+<!-- Composer -->
+<footer class="composer soft-card">
+    <input pInputText type="text" [(ngModel)]="input" (keyup.enter)="send()" [disabled]="isBusy" placeholder="What's on your mind?…" />
+    <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [outlined]="false" (onClick)="send()" [disabled]="isBusy" />
+</footer>

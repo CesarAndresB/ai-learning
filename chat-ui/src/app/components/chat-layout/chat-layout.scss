@@ -1,0 +1,32 @@
+ .shell {
+     height: 100vh;
+     padding: 24px;
+     display: grid;
+     gap: 24px;
+     grid-template-columns: 320px 1fr;
+     background-color: #F8FAFF;
+     overflow: hidden; /* contain overflowing children */
+ }
+
+ .sidebar {
+     padding: 16px;
+     backdrop-filter: blur(8px);
+     background-color: white;
+     border-radius: 20px;
+     box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+     display: flex;
+     flex-direction: column;
+     min-height: 0; /* allow child flex items to shrink */
+ }
+
+ .panel {
+     display: flex;
+     flex-direction: column;
+     overflow: hidden;
+ }
+
+ @media (max-width: 1024px) {
+     .shell {
+         grid-template-columns: 1fr;
+     }
+ }

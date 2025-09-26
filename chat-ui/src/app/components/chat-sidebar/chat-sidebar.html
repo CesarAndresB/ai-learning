@@ -1,0 +1,29 @@
+<div class="logo">
+    <span>Coffee Chat AI</span>
+</div>
+
+<div class="topbar">
+        <button pButton type="button" severity="secondary" label="+ New chat" class="new-btn" (click)="onNewChat()"></button>
+    </div>
+
+<div class="title">Your conversations <p-button icon="pi pi-search-plus" [rounded]="true" severity="secondary"
+        [outlined]="true" />
+</div>
+
+<p-divider></p-divider>
+
+<div class="conversations" aria-label="Conversations list">
+    <div *ngFor="let c of chats" class="conversation" [class.active]="c.id===activeId" (click)="onSelect(c.id)">
+        <div class="conversation-icon"><i class="pi pi-comment"></i></div>
+        <div class="conversation-title">{{ c.title || '(untitled)' }}</div>
+    </div>
+</div>
+
+<p-divider></p-divider>
+
+<div class="settings">
+    <label for="temp">Temperature: {{ temperature | number:'1.1-2' }}</label>
+    <input id="temp" type="range" min="0" max="1" step="0.05" [(ngModel)]="temperature" (change)="onTempChangeCommit()" />
+    <small *ngIf="savingTemp">Saving…</small>
+    <small *ngIf="!savingTemp">Higher = more creative</small>
+</div>

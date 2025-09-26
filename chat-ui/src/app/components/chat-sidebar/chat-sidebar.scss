@@ -1,0 +1,96 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0; /* allow flex children to shrink */
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+
+    span {
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 35px;
+        color: #401D15;
+    }
+}
+
+.new-btn {
+    padding: 9px;
+    width: 100%;
+}
+
+.icon-btn span {
+    font-size: 20px;
+}
+
+.title {
+    margin: 14px 2px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.title .link {
+    color: #64748b;
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.conversations {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1 auto; /* take remaining space */
+    min-height: 0;   /* enable proper flex overflow */
+    overflow-y: auto; /* scroll within sidebar rather than grow page */
+    padding-right: 6px; /* small room for scrollbar */
+    max-height: 65vh; /* hard cap as safety on small screens */
+    .conversation {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        background: transparent;
+        border-radius: 25px;
+        padding: 12px 20px;
+        transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+
+        &-icon{
+            display: flex;
+            margin-right: 12px;
+            
+            i{
+                font-size: 17px;
+                transition: color 180ms ease;
+            }
+        }
+
+        &.active, &:hover {
+            background: rgba(64, 29, 21, 0.1);
+            color: #401D15;
+
+            .conversation-icon i {
+                color: #401D15;
+            }
+        }
+    }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .conversations .conversation {
+        transition: none;
+    }
+    .conversations .conversation .conversation-icon i {
+        transition: none;
+    }
+}
